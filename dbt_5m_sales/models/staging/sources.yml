@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: m5_sales_data
+    database: de-zoomcamp-project-456204
+    schema: m5_sales_data
+    tables:
+      - name: cleaned_parquet_external
+        description: "Cleaned external data in Parquet format from GCS"
