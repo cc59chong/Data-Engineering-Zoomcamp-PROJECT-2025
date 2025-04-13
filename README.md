@@ -57,19 +57,20 @@ OPTIONS (
   uris = ['gs://m5-sales-cleaned-bucket/cleaned_data_parquet/*.parquet']
 );
 ```
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG">
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"> <br>
 #### dbt
 To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG">
-**dbt Commands (Execution Sequence)**
-* Test Connection & Configuration：dbt debug
-* Run Full Pipeline: dbt build
+**dbt Commands (Execution Sequence)** <br>
+* Test Connection & Configuration：dbt debug <br>
+* Run Full Pipeline: dbt build <br>
 * Generate Documentation: dbt docs generate <br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG">
 #### Upload tables to BigQuery
 <img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG">
 #### Git the dbt project to GitHub
 <img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG>
+ 
 ### 5. Workflow Orchestration with Kestra
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
