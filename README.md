@@ -38,11 +38,11 @@ Process M5 CSV data using Spark scripts, package the scripts into a Docker image
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG">
 #### Output cleaned data as Parquet to GCS
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG"><br>
-> note: Folder Structure for Testing: <br>
->> `cleaned_data_parquet`: Contains all fully processed data in Parquet format (This will be used)
->> * Test Folders
->>> `cleaned_data_csv`：A CSV sample subset (generated in clean_data_spark.ipynb) is used to benchmark storage efficiency, confirming Parquet's superiority in performance and compression.
->>> `cleaned_data_parquet_docker`: Parquet-formatted sample data is used to verify the Docker pipeline's end-to-end functionality, including image builds and containerized execution.
+**note** <br>
+> `cleaned_data_parquet`: Contains all fully processed data in Parquet format (This will be used)
+> * Test Folders
+>> `cleaned_data_csv`：A CSV sample subset (generated in clean_data_spark.ipynb) is used to benchmark storage efficiency, confirming Parquet's superiority in performance and compression. <br>
+>> `cleaned_data_parquet_docker`: Parquet-formatted sample data is used to verify the Docker pipeline's end-to-end functionality, including image builds and containerized execution.
 
 
 
