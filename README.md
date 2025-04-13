@@ -8,16 +8,16 @@ Establish the foundational infrastructure for the data project—object storage,
 #### Setting Up GCP for Terraform Infrastructure Provisioning
 To enable Terraform to deploy and manage infrastructure, the following GCP resources must be configured: 1. GCP Project Setup 2. Service Account & Authentication 3. Service Account & Authentication
 #### Creating GCP infrastructure with Terraform
-Configure all required infrastructure in a single `main.tf` file containing: 1. Provider configuration; 2. Resource definitions; 3. Variables and outputs.
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG" width="50%"><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG" width="50%">
+Configure all required infrastructure in a single `main.tf` file containing: 1. Provider configuration; 2. Resource definitions; 3. Variables and outputs.<br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG" width="70%"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG" width="70%">
 
 ### 2.Data Source Preparation & Exploratory Analysis
 #### Objective
 Ingest raw data into GCS, analyze its structure via Jupyter, design a star schema, and define data attributes including content, fields, date fields, and primary keys.
 #### Upload M5 Raw CSV Files to Terraform-Provisioned GCS Bucket
  1. Download the [raw data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)；2. Configure Cloud Tools；3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`<br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG"> <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG" width="70%"> <br>
 **The dataset** <br>
 `calendar.csv`: Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.<br>
 `sales_train_validation.csv`: Contains the historical daily unit sales data per product and store [d_1 - d_1913].<br>
@@ -26,7 +26,7 @@ Ingest raw data into GCS, analyze its structure via Jupyter, design a star schem
 `clean_data_spark.ipynb`
 #### Star Schema Diagram and Table Documentation
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png" width="50%">
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG" width="70%">
 
 ### 3. Data Cleaning Logic (Spark + Docker)
 #### Objective
@@ -35,9 +35,9 @@ Process M5 CSV data using Spark scripts, package the scripts into a Docker image
 `clean_data_spark.ipynb`, `spark_run_cleaning.py`
 #### Containerize with Docker for portability
 `Dockerfile`<br><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG" width="70%">
 #### Output cleaned data as Parquet to GCS
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG" width="60%"><br>
 **note** <br>
 > `cleaned_data_parquet`: Contains all fully processed data in Parquet format (This will be used)
 > * Test Folders
@@ -60,7 +60,7 @@ OPTIONS (
 <img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"><br>
 #### dbt
 To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG" width="60%"><br>
 **dbt Commands (Execution Sequence)** <br>
 * Test Connection & Configuration：dbt debug<br>
 * Run Full Pipeline: dbt build<br>
@@ -75,10 +75,10 @@ To optimize development speed and control resource costs given the large dataset
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
 #### Workflow Overview
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG" width="50%"><br>
 #### Setup Guide
 1. Install Docker and Start Kestra Locally.
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG" width="60%"> <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG" width="70%"> <br>
 2. Use `docker-compose.yml` to launch Kestra, including the server and UI. <br>
 3. Set up a GCP Service Account by navigating to the GCP Console, creating a new Service Account, and granting it the roles of BigQuery Data Viewer and BigQuery Job User. Finally, download the key file (.json) for authentication. (Skip the stage if you did this previously) <br>
 4. Connect to dbt Cloud<br>
