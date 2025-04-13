@@ -57,15 +57,15 @@ OPTIONS (
   uris = ['gs://m5-sales-cleaned-bucket/cleaned_data_parquet/*.parquet']
 );
 ```
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"> <br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"><br>
 #### dbt
 To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG"> <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG"><br>
 **dbt Commands (Execution Sequence)** <br>
-* Test Connection & Configuration：dbt debug <br>
-* Run Full Pipeline: dbt build <br>
+* Test Connection & Configuration：dbt debug<br>
+* Run Full Pipeline: dbt build<br>
 * Generate Documentation: dbt docs generate <br><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"> <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"><br>
 #### Upload tables to BigQuery
 <img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
 #### Git the dbt project to GitHub
@@ -84,7 +84,7 @@ This workflow automates the entire data pipeline with a single click: it continu
 4. Connect to dbt Cloud<br>
    * Get API Token：Login to dbt Cloud → Click avatar → Account Settings → API Tokens → Generate a Personal Token<br>
    * Get `account_id` and `job_id`:<br>
-     * account_id: Visible in the `URL: https://cloud.getdbt.com/#/accounts/**12345**/projects/...`<br>
+     * account_id: Visible in the URL: ```https://cloud.getdbt.com/#/accounts/**12345**/projects/...```<br>
      * job_id: Click your job → the ID is in the URL<br>
 5.  Generate Gmail App Password: Go to Google Account Security → Enable 2-Step Verification → Open App Passwords → Choose app: Mail, name: kestra, then generate → 
  Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
