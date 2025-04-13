@@ -67,15 +67,15 @@ To optimize development speed and control resource costs given the large dataset
 * Generate Documentation: dbt docs generate <br><br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"><br>
 #### Upload tables to BigQuery
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
+<br><img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
 #### Git the dbt project to GitHub
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG"><br>
+<br><img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG"><br>
  
 ### 5. Workflow Orchestration with Kestra
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
 #### Workflow Overview
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG"><br>
 #### Setup Guide
 1. Install Docker and Start Kestra Locally.
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG"> <br>
@@ -88,6 +88,6 @@ This workflow automates the entire data pipeline with a single click: it continu
      * job_id: Click your job → the ID is in the URL<br>
 5.  Generate Gmail App Password: Go to Google Account Security → Enable 2-Step Verification → Open App Passwords → Choose app: Mail, name: kestra, then generate → 
  Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
-6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.)
+6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.)<br>
 <img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG"><br>
 7. Write Kestra workflow `kestra-etl.yml`
