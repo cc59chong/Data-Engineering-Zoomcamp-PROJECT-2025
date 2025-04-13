@@ -44,7 +44,25 @@ Process M5 CSV data using Spark scripts, package the scripts into a Docker image
 >> `cleaned_data_csv`：A CSV sample subset (generated in clean_data_spark.ipynb) is used to benchmark storage efficiency, confirming Parquet's superiority in performance and compression. <br>
 >> `cleaned_data_parquet_docker`: Parquet-formatted sample data is used to verify the Docker pipeline's end-to-end functionality, including image builds and containerized execution.
 
-
+### 4. Data Modeling (dbt + BigQuery)
+#### Objective
+Implement layered modeling (staging → marts → reports) using cleaned data
+#### Create External Tables in BigQuery
+Query Parquet files directly from GCS without BigQuery storage - cost-efficient with full query capabilities.<br>
+```
+-- create external table
+CREATE OR REPLACE EXTERNAL TABLE `de-zoomcamp-project-456204.m5_sales_data.cleaned_parquet_external`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://m5-sales-cleaned-bucket/cleaned_data_parquet/*.parquet']
+);
+```
+#### dbt
+To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
+**dbt Commands (Execution Sequence)**
+* Test Connection & Configuration：dbt debug
+* Run Full Pipeline: dbt build
+- Generate Documentation: dbt docs generate
 
 ### 5. Workflow Orchestration with Kestra
 #### Objective
