@@ -57,21 +57,27 @@ OPTIONS (
   uris = ['gs://m5-sales-cleaned-bucket/cleaned_data_parquet/*.parquet']
 );
 ```
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG">
 #### dbt
 To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG">
 **dbt Commands (Execution Sequence)**
 * Test Connection & Configuration：dbt debug
 * Run Full Pipeline: dbt build
-- Generate Documentation: dbt docs generate
-
+* Generate Documentation: dbt docs generate <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG">
+#### Upload tables to BigQuery
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG">
+#### Git the dbt project to GitHub
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG>
 ### 5. Workflow Orchestration with Kestra
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
 #### Workflow Overview
-![Kestra Workflow Diagram](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG)
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG">
 #### Setup Guide
 1. Install Docker and Start Kestra Locally.
-![Docker-Kestra](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG)
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG">
 2. Use `docker-compose.yml` to launch Kestra, including the server and UI.
 3. Set up a GCP Service Account by navigating to the GCP Console, creating a new Service Account, and granting it the roles of BigQuery Data Viewer and BigQuery Job User. Finally, download the key file (.json) for authentication. (Skip the stage if you did this previously)
 4. Connect to dbt Cloud
