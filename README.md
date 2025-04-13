@@ -57,19 +57,22 @@ OPTIONS (
   uris = ['gs://m5-sales-cleaned-bucket/cleaned_data_parquet/*.parquet']
 );
 ```
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"> <br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"> 
 #### dbt
 To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG"> <br>
+
 **dbt Commands (Execution Sequence)** <br>
 * Test Connection & Configuration：dbt debug <br>
 * Run Full Pipeline: dbt build <br>
 * Generate Documentation: dbt docs generate <br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"> <br>
+
 #### Upload tables to BigQuery
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG">
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
+
 #### Git the dbt project to GitHub
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG"><br>
  
 ### 5. Workflow Orchestration with Kestra
 #### Objective
@@ -78,16 +81,16 @@ This workflow automates the entire data pipeline with a single click: it continu
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG">
 #### Setup Guide
 1. Install Docker and Start Kestra Locally.
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG">
-2. Use `docker-compose.yml` to launch Kestra, including the server and UI.
-3. Set up a GCP Service Account by navigating to the GCP Console, creating a new Service Account, and granting it the roles of BigQuery Data Viewer and BigQuery Job User. Finally, download the key file (.json) for authentication. (Skip the stage if you did this previously)
-4. Connect to dbt Cloud
-   * Get API Token：Login to dbt Cloud → Click avatar → Account Settings → API Tokens → Generate a Personal Token
-   * Get `account_id` and `job_id`:
-     * account_id: Visible in the URL: https://cloud.getdbt.com/#/accounts/**12345**/projects/...
-     * job_id: Click your job → the ID is in the URL
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG"> <br>
+2. Use `docker-compose.yml` to launch Kestra, including the server and UI. <br>
+3. Set up a GCP Service Account by navigating to the GCP Console, creating a new Service Account, and granting it the roles of BigQuery Data Viewer and BigQuery Job User. Finally, download the key file (.json) for authentication. (Skip the stage if you did this previously) <br>
+4. Connect to dbt Cloud<br>
+   * Get API Token：Login to dbt Cloud → Click avatar → Account Settings → API Tokens → Generate a Personal Token<br>
+   * Get `account_id` and `job_id`:<br>
+     * account_id: Visible in the `URL: https://cloud.getdbt.com/#/accounts/**12345**/projects/...`<br>
+     * job_id: Click your job → the ID is in the URL<br>
 5.  Generate Gmail App Password: Go to Google Account Security → Enable 2-Step Verification → Open App Passwords → Choose app: Mail, name: kestra, then generate → 
- Copy the 16-digit password (used as EMAIL_PASSWORD)
+ Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
 6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.)
-![Kestra_KVstore](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG)
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG"><br>
 7. Write Kestra workflow `kestra-etl.yml`
