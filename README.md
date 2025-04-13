@@ -16,14 +16,16 @@ Configure all required infrastructure in a single `main.tf` file containing: 1. 
 #### Objective
 Ingest raw data into GCS, analyze its structure via Jupyter, design a star schema, and define data attributes including content, fields, date fields, and primary keys.
 #### Upload M5 Raw CSV Files to Terraform-Provisioned GCS Bucket
- 1. Download the ![M5 dataset](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG)；2. Configure Cloud Tools； 3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`
+ 1. Download the ![raw data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)；2. Configure Cloud Tools；3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`
+ 2. ![M5 dataset](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG)
 **The dataset**
 - `calendar.csv` - Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.
 - `sales_train_validation.csv` - Contains the historical daily unit sales data per product and store [d_1 - d_1913].
 - `sell_prices.csv` - Contains information about the price of the products sold per store and date.
-#### Exploratory Data Analysis in Jupyter Notebook `clean_data_spark.ipynb`
+#### Exploratory Data Analysis in Jupyter Notebook 
+`clean_data_spark.ipynb`
 #### Star Schema Diagram and Table Documentation
-![satr_schema](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png)
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png" width="50%">
 ![tables](https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG)
 
 ### 5: Workflow Orchestration with Kestra
