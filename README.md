@@ -9,7 +9,7 @@ Establish the foundational infrastructure for the data project—object storage,
 To enable Terraform to deploy and manage infrastructure, the following GCP resources must be configured: 1. GCP Project Setup 2. Service Account & Authentication 3. Service Account & Authentication
 #### Creating GCP infrastructure with Terraform
 Configure all required infrastructure in a single `main.tf` file containing: 1. Provider configuration; 2. Resource definitions; 3. Variables and outputs.
-<imh src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG">
+<imh src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG"><br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG">
 
 ### 2.Data Source Preparation & Exploratory Analysis
@@ -32,13 +32,13 @@ Ingest raw data into GCS, analyze its structure via Jupyter, design a star schem
 #### Objective
 Process M5 CSV data using Spark scripts, package the scripts into a Docker image for local development, and output the results to the GCS cleaned partition in Parquet format.
 #### Develop Spark data transformation scripts
-'clean_data_spark.ipynb`, `spark_run_cleaning'
+`clean_data_spark.ipynb`, `spark_run_cleaning.py`
 #### Containerize with Docker for portability
-`Dockerfile`
+`Dockerfile`<br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG">
 #### Output cleaned data as Parquet to GCS
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG">
-> note: Folder Structure for Testing:
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG"><br>
+> note: Folder Structure for Testing: <br>
 >> `cleaned_data_parquet`: Contains all fully processed data in Parquet format (This will be used)
 
 
