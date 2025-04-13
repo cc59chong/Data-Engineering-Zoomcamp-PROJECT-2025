@@ -17,7 +17,7 @@ Configure all required infrastructure in a single `main.tf` file containing: 1. 
 Ingest raw data into GCS, analyze its structure via Jupyter, design a star schema, and define data attributes including content, fields, date fields, and primary keys.
 #### Upload M5 Raw CSV Files to Terraform-Provisioned GCS Bucket
  1. Download the [raw data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)；2. Configure Cloud Tools；3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`<br>
-[csv_Bucket](/exploratory_analysis/csv_bucket.PNG")<br>
+[csv_Bucket](/exploratory_analysis/csv_bucket.PNG")<br><br>
 **The dataset** <br>
 `calendar.csv`: Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.<br>
 `sales_train_validation.csv`: Contains the historical daily unit sales data per product and store [d_1 - d_1913].<br>
@@ -64,7 +64,7 @@ To optimize development speed and control resource costs given the large dataset
 **dbt Commands (Execution Sequence)** <br>
 * Test Connection & Configuration：dbt debug<br>
 * Run Full Pipeline: dbt build<br>
-* Generate Documentation: dbt docs generate <br>
+* Generate Documentation: dbt docs generate<br><br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"><br>
 #### Upload tables to BigQuery
 [Upload_dbt_Data](/dbt%2Bbigquery/upload_dbt_data.PNG)
