@@ -9,8 +9,8 @@ Establish the foundational infrastructure for the data project—object storage,
 To enable Terraform to deploy and manage infrastructure, the following GCP resources must be configured: 1. GCP Project Setup 2. Service Account & Authentication 3. Service Account & Authentication
 #### Creating GCP infrastructure with Terraform
 Configure all required infrastructure in a single `main.tf` file containing: 1. Provider configuration; 2. Resource definitions; 3. Variables and outputs.<br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG" width="70%"><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG" width="70%">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG" width="60%"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG" width="60%">
 
 ### 2.Data Source Preparation & Exploratory Analysis
 #### Objective
@@ -26,7 +26,7 @@ Ingest raw data into GCS, analyze its structure via Jupyter, design a star schem
 `clean_data_spark.ipynb`
 #### Star Schema Diagram and Table Documentation
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png" width="50%">
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG" width="70%">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG" width="60%">
 
 ### 3. Data Cleaning Logic (Spark + Docker)
 #### Objective
@@ -35,7 +35,7 @@ Process M5 CSV data using Spark scripts, package the scripts into a Docker image
 `clean_data_spark.ipynb`, `spark_run_cleaning.py`
 #### Containerize with Docker for portability
 `Dockerfile`<br><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG" width="70%">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG" width="60%">
 #### Output cleaned data as Parquet to GCS
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG" width="60%"><br>
 **note** <br>
@@ -65,20 +65,20 @@ To optimize development speed and control resource costs given the large dataset
 * Test Connection & Configuration：dbt debug<br>
 * Run Full Pipeline: dbt build<br>
 * Generate Documentation: dbt docs generate <br><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG" width="60%"><br>
 #### Upload tables to BigQuery
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG" width="60%"><br>
 #### Git the dbt project to GitHub
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG"><br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG" width="60%"><br>
  
 ### 5. Workflow Orchestration with Kestra
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
 #### Workflow Overview
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG" width="50%"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG" width="60%"><br>
 #### Setup Guide
 1. Install Docker and Start Kestra Locally.
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG" width="70%"> <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG" width="60%"> <br>
 2. Use `docker-compose.yml` to launch Kestra, including the server and UI. <br>
 3. Set up a GCP Service Account by navigating to the GCP Console, creating a new Service Account, and granting it the roles of BigQuery Data Viewer and BigQuery Job User. Finally, download the key file (.json) for authentication. (Skip the stage if you did this previously) <br>
 4. Connect to dbt Cloud<br>
@@ -89,5 +89,5 @@ This workflow automates the entire data pipeline with a single click: it continu
 5.  Generate Gmail App Password: Go to Google Account Security → Enable 2-Step Verification → Open App Passwords → Choose app: Mail, name: kestra, then generate → 
  Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
 6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.)<br>
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG"><br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG" width="60%"><br>
 7. Write Kestra workflow `kestra-etl.yml`
