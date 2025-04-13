@@ -19,9 +19,9 @@ Ingest raw data into GCS, analyze its structure via Jupyter, design a star schem
  1. Download the [raw data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)；2. Configure Cloud Tools；3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG">
 **The dataset** <br>
-* `calendar.csv` - Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.<br>
-* `sales_train_validation.csv` - Contains the historical daily unit sales data per product and store [d_1 - d_1913].<br>
-* `sell_prices.csv` - Contains information about the price of the products sold per store and date.<br>
+`calendar.csv` - Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.<br>
+`sales_train_validation.csv` - Contains the historical daily unit sales data per product and store [d_1 - d_1913].<br>
+`sell_prices.csv` - Contains information about the price of the products sold per store and date.<br>
 #### Exploratory Data Analysis in Jupyter Notebook 
 `clean_data_spark.ipynb`
 #### Star Schema Diagram and Table Documentation
