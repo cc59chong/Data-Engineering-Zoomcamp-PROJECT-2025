@@ -9,8 +9,8 @@ Establish the foundational infrastructure for the data project—object storage,
 To enable Terraform to deploy and manage infrastructure, the following GCP resources must be configured: 1. GCP Project Setup 2. Service Account & Authentication 3. Service Account & Authentication
 #### Creating GCP infrastructure with Terraform
 Configure all required infrastructure in a single `main.tf` file containing: 1. Provider configuration; 2. Resource definitions; 3. Variables and outputs.
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG"><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG" width="50%"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG" width="50%">
 
 ### 2.Data Source Preparation & Exploratory Analysis
 #### Objective
@@ -78,7 +78,7 @@ This workflow automates the entire data pipeline with a single click: it continu
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG"><br>
 #### Setup Guide
 1. Install Docker and Start Kestra Locally.
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG"> <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/docker_kestra.PNG" width="60%"> <br>
 2. Use `docker-compose.yml` to launch Kestra, including the server and UI. <br>
 3. Set up a GCP Service Account by navigating to the GCP Console, creating a new Service Account, and granting it the roles of BigQuery Data Viewer and BigQuery Job User. Finally, download the key file (.json) for authentication. (Skip the stage if you did this previously) <br>
 4. Connect to dbt Cloud<br>
@@ -89,5 +89,5 @@ This workflow automates the entire data pipeline with a single click: it continu
 5.  Generate Gmail App Password: Go to Google Account Security → Enable 2-Step Verification → Open App Passwords → Choose app: Mail, name: kestra, then generate → 
  Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
 6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.)<br>
-![kestra_kvstore]("https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG)<br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG"><br>
 7. Write Kestra workflow `kestra-etl.yml`
