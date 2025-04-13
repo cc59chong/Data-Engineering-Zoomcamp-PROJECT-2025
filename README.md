@@ -67,9 +67,9 @@ To optimize development speed and control resource costs given the large dataset
 * Generate Documentation: dbt docs generate <br><br>
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"><br>
 #### Upload tables to BigQuery
-<br><img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/upload_dbt_data.PNG"><br>
 #### Git the dbt project to GitHub
-<br><img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG"><br>
+<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/git.PNG"><br>
  
 ### 5. Workflow Orchestration with Kestra
 #### Objective
@@ -89,5 +89,5 @@ This workflow automates the entire data pipeline with a single click: it continu
 5.  Generate Gmail App Password: Go to Google Account Security → Enable 2-Step Verification → Open App Passwords → Choose app: Mail, name: kestra, then generate → 
  Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
 6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.)<br>
-<img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG"><br>
+![kestra_kvstore]("https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_kvstore.PNG)<br>
 7. Write Kestra workflow `kestra-etl.yml`
