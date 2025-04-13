@@ -1,7 +1,7 @@
 # Data-Engineering-Zoomcamp-PROJECT-2025
 
 
-### 1: Infrastructure Setup (Using Terraform)
+### 1. Infrastructure Setup (Using Terraform)
 #### Objective
 Establish the foundational infrastructure for the data project—object storage, data warehouse, and access controls—to prepare for subsequent data cleaning, modeling, and orchestration workflows.
 **Key** : Raw/Cleaned data buckets in GCS；dataset in BigQuery; Secure access for Spark, dbt, and Kestra(IAM)
@@ -12,12 +12,12 @@ Configure all required infrastructure in a single `main.tf` file containing: 1. 
 <imh src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG">
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG">
 
-### Data Source Preparation & Exploratory Analysis
+### 2.Data Source Preparation & Exploratory Analysis
 #### Objective
 Ingest raw data into GCS, analyze its structure via Jupyter, design a star schema, and define data attributes including content, fields, date fields, and primary keys.
 #### Upload M5 Raw CSV Files to Terraform-Provisioned GCS Bucket
  1. Download the [raw data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)；2. Configure Cloud Tools；3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`
- 2. <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/csv_bucket.PNG">
 **The dataset**
 - `calendar.csv` - Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.
 - `sales_train_validation.csv` - Contains the historical daily unit sales data per product and store [d_1 - d_1913].
@@ -28,7 +28,23 @@ Ingest raw data into GCS, analyze its structure via Jupyter, design a star schem
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png" width="50%">
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG">
 
-### 5: Workflow Orchestration with Kestra
+### 3. Data Cleaning Logic (Spark + Docker)
+#### Objective
+Process M5 CSV data using Spark scripts, package the scripts into a Docker image for local development, and output the results to the GCS cleaned partition in Parquet format.
+#### Develop Spark data transformation scripts
+'clean_data_spark.ipynb`, `spark_run_cleaning'
+#### Containerize with Docker for portability
+`Dockerfile`
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/image_container.PNG">
+#### Output cleaned data as Parquet to GCS
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/spark%2Bdocker/upload_data.PNG">
+> note: Folder Structure for Testing:
+>> `cleaned_data_parquet`: Contains all fully processed data in Parquet format (This will be used)
+
+
+
+
+### 5. Workflow Orchestration with Kestra
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
 #### Workflow Overview
