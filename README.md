@@ -10,7 +10,7 @@ To enable Terraform to deploy and manage infrastructure, the following GCP resou
 #### Creating GCP infrastructure with Terraform
 Configure all required infrastructure in a single `main.tf` file containing: 1. Provider configuration; 2. Resource definitions; 3. Variables and outputs.<br>
 ![Terraform_Bucket]("https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-bucket.PNG)<br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/terraform/terraform-dataset.PNG" width="60%">
+![Terraform_Dataset](/terraform/terraform-dataset.PNG)
 
 ### 2.Data Source Preparation & Exploratory Analysis
 #### Objective
