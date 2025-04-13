@@ -17,7 +17,7 @@ Configure all required infrastructure in a single `main.tf` file containing: 1. 
 Ingest raw data into GCS, analyze its structure via Jupyter, design a star schema, and define data attributes including content, fields, date fields, and primary keys.
 #### Upload M5 Raw CSV Files to Terraform-Provisioned GCS Bucket
  1. Download the [raw data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)；2. Configure Cloud Tools；3. Upload CSV files to the designated raw data bucket `gsutil cp *.csv gs://m5-sales-raw-bucket/`<br>
-[csv_Bucket](/exploratory_analysis/csv_bucket.PNG")
+[csv_Bucket](/exploratory_analysis/csv_bucket.PNG")<br>
 **The dataset** <br>
 `calendar.csv`: Contains the dates on which products are sold. The dates are in a yyyy/dd/mm format.<br>
 `sales_train_validation.csv`: Contains the historical daily unit sales data per product and store [d_1 - d_1913].<br>
@@ -25,7 +25,7 @@ Ingest raw data into GCS, analyze its structure via Jupyter, design a star schem
 #### Exploratory Data Analysis in Jupyter Notebook 
 `clean_data_spark.ipynb`
 #### Star Schema Diagram and Table Documentation
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png" width="50%">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/star_schema.png" width="60%">
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/exploratory_analysis/table_description.JPG">
 
 ### 3. Data Cleaning Logic (Spark + Docker)
@@ -60,12 +60,12 @@ OPTIONS (
 <img scr="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/cleaned_table.PNG"><br>
 #### dbt
 To optimize development speed and control resource costs given the large dataset size (58+ million rows × 18 columns), I implemented a strategic sampling approach by extracting only the most recent year's data (2016) as a representative subset. This method maintained data characteristics while significantly reducing processing overhead during the development phase. <br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG" width="60%"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/data_flow.PNG"><br>
 **dbt Commands (Execution Sequence)** <br>
 * Test Connection & Configuration：dbt debug<br>
 * Run Full Pipeline: dbt build<br>
-* Generate Documentation: dbt docs generate <br><br>
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG" width="60%"><br>
+* Generate Documentation: dbt docs generate <br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dbt%2Bbigquery/dbt_bulid.PNG"><br>
 #### Upload tables to BigQuery
 [Upload_dbt_Data](/dbt%2Bbigquery/upload_dbt_data.PNG)
 #### Git the dbt project to GitHub
@@ -75,7 +75,7 @@ To optimize development speed and control resource costs given the large dataset
 #### Objective
 This workflow automates the entire data pipeline with a single click: it continuously monitors BigQuery for new data, triggers dbt model builds via dbt Cloud, writes the results back to BigQuery upon successful execution, and sends email notifications in case of any failures.
 #### Workflow Overview
-<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG" width="60%"><br>
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/kestra/kestra_flow.PNG" width="80%"><br>
 #### Setup Guide
 1. Install Docker and Start Kestra Locally. [Docker_Kestra](/kestra/docker_kestra.PNG)
 2. Use `docker-compose.yml` to launch Kestra, including the server and UI. <br>
