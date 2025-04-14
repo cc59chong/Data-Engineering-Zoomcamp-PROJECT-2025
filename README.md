@@ -1,6 +1,26 @@
-# Data-Engineering-Zoomcamp-PROJECT-2025
+# End-to-End Cloud Data Pipeline for Retail Sales Forecasting
+## Project Overview
+This project is a comprehensive end-to-end data pipeline built. It ingests raw retail sales data from the M5 Forecasting dataset, transforms and models it using Spark and dbt, and automates the entire workflow using Kestra. The processed data is finally visualized through interactive dashboards on Looker Studio. The architecture is designed to be modular, scalable, and cost-efficient by leveraging cloud-native tools on Google Cloud Platform (GCP).
+## Problem Statement
+Retail data often exists in large, unstructured formats across multiple files, making it challenging to perform timely and reliable analysis. The objective of this project is to build a scalable pipeline that:<br>
+* Centralizes disparate raw CSV files in cloud storage.<br>
+* Cleans and transforms the data into a structured format for analysis.<br>
+* Applies a dimensional modeling approach to support time-series forecasting and sales analysis.<br>
+* Enables automation and observability through orchestration.<br>
+* Presents insights through user-friendly dashboards.<br>
+## Data Flow
+* Infrastructure Setup: Provisioned GCS buckets, BigQuery datasets, and IAM roles using Terraform.<br>
+- Data Ingestion & Exploration: Uploaded raw CSVs to GCS and conducted initial exploration in Jupyter to understand schema, content, and data relationships.
+- Data Cleaning (Spark + Docker): Transformed raw data using PySpark scripts containerized via Docker. The output was stored in GCS in Parquet format to optimize -performance and storage.
 
+Data Modeling (dbt + BigQuery)
+Created external tables in BigQuery and implemented a multi-layered dbt model (staging → marts → reports). Sampling strategy was used to develop on a manageable subset.
 
+Orchestration (Kestra)
+Designed a Kestra workflow to trigger the dbt cloud job on a schedule or upon data arrival, handle job failures with email notifications, and ensure pipeline reliability.
+
+Visualization (Looker Studio)
+Built interactive dashboards to analyze sales trends by time, product, and store, leveraging data from the final report tables in BigQuery.
 ### 1. Infrastructure Setup (Using Terraform)
 #### Objective
 Establish the foundational infrastructure for the data project—object storage, data warehouse, and access controls—to prepare for subsequent data cleaning, modeling, and orchestration workflows.
