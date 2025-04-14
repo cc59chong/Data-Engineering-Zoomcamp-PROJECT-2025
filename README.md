@@ -89,3 +89,9 @@ This workflow automates the entire data pipeline with a single click: it continu
  Copy the 16-digit password (used as EMAIL_PASSWORD)<br>
 6. Set Variables in Kestra KV Store (note: Community Edition does not support UI-based secret creation. Use KV Store instead.) [Kestra+KVStore](/kestra/kestra_kvstore.PNG)
 7. Write Kestra workflow `kestra-etl.yml`
+### 6. Dashboard
+With Looker Studio running, create insightful dashboards and reports using the report data stored in BigQuery.
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dashboard/sales_by_item.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dashboard/sales_by_store.PNG">
+<img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dashboard/sales_by_time.PNG">
+
