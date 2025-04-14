@@ -23,6 +23,7 @@ Retail data often exists in large, unstructured formats across multiple files, m
 * Workflow Orchestration: Kestra<br>
 * Visualization: Looker Studio<br>
 * Development Environment: Jupyter, WSL on Windows<br>
+## Pipeline Overview
 ### 1. Infrastructure Setup (Using Terraform)
 #### Objective
 Establish the foundational infrastructure for the data project—object storage, data warehouse, and access controls—to prepare for subsequent data cleaning, modeling, and orchestration workflows.
