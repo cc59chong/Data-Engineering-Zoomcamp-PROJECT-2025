@@ -10,17 +10,19 @@ Retail data often exists in large, unstructured formats across multiple files, m
 * Presents insights through user-friendly dashboards.<br>
 ## Data Flow
 * Infrastructure Setup: Provisioned GCS buckets, BigQuery datasets, and IAM roles using Terraform.<br>
-- Data Ingestion & Exploration: Uploaded raw CSVs to GCS and conducted initial exploration in Jupyter to understand schema, content, and data relationships.
-- Data Cleaning (Spark + Docker): Transformed raw data using PySpark scripts containerized via Docker. The output was stored in GCS in Parquet format to optimize -performance and storage.
-
-Data Modeling (dbt + BigQuery)
-Created external tables in BigQuery and implemented a multi-layered dbt model (staging → marts → reports). Sampling strategy was used to develop on a manageable subset.
-
-Orchestration (Kestra)
-Designed a Kestra workflow to trigger the dbt cloud job on a schedule or upon data arrival, handle job failures with email notifications, and ensure pipeline reliability.
-
-Visualization (Looker Studio)
-Built interactive dashboards to analyze sales trends by time, product, and store, leveraging data from the final report tables in BigQuery.
+* Data Ingestion & Exploration: Uploaded raw CSVs to GCS and conducted initial exploration in Jupyter to understand schema, content, and data relationships.<br>
+* Data Cleaning (Spark + Docker): Transformed raw data using PySpark scripts containerized via Docker. The output was stored in GCS in Parquet format to optimize -performance and storage.<br>
+* Data Modeling (dbt + BigQuery): Created external tables in BigQuery and implemented a multi-layered dbt model (staging → marts → reports). Sampling strategy was used to develop on a manageable subset.<br>
+* Orchestration (Kestra): Designed a Kestra workflow to trigger the dbt cloud job on a schedule or upon data arrival, handle job failures with email notifications, and ensure pipeline reliability.<br>
+* Visualization (Looker Studio): Built interactive dashboards to analyze sales trends by time, product, and store, leveraging data from the final report tables in BigQuery.
+## Tech Stack Used
+* Cloud Platform: Google Cloud Platform (GCS, BigQuery, IAM)<br>
+* Infrastructure-as-Code: Terraform<br>
+* Data Transformation: Apache Spark (PySpark), Docker<br>
+* Modeling & SQL Abstraction: dbt (with BigQuery)<br>
+* Workflow Orchestration: Kestra<br>
+* Visualization: Looker Studio<br>
+* Development Environment: Jupyter, WSL on Windows<br>
 ### 1. Infrastructure Setup (Using Terraform)
 #### Objective
 Establish the foundational infrastructure for the data project—object storage, data warehouse, and access controls—to prepare for subsequent data cleaning, modeling, and orchestration workflows.
@@ -114,4 +116,10 @@ With Looker Studio running, create insightful dashboards and reports using the r
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dashboard/sales_by_item.PNG">
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dashboard/sales_by_store.PNG">
 <img src="https://github.com/cc59chong/Data-Engineering-Zoomcamp-PROJECT-2025/blob/main/dashboard/sales_by_time.PNG">
-
+## Conclusion
+This project successfully delivers a cloud-based, production-grade data pipeline tailored for large-scale retail forecasting use cases. It demonstrates the integration of modern data engineering tools across the full lifecycle—from ingestion and transformation to orchestration and visualization. Key outcomes include:
+* Efficient processing of 58M+ rows using Spark and Parquet.
+* Modular dbt models following the best practices of the layered architecture.
+* Fully automated workflow with failure handling and alerting.
+* Insightful dashboards supporting business decision-making.
+This solution is scalable, maintainable, and easily extensible for future enhancements such as adding new metrics, integrating ML models, or supporting real-time data.
