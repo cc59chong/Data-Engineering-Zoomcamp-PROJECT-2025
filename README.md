@@ -8,6 +8,8 @@ Retail data often exists in large, unstructured formats across multiple files, m
 * Applies a dimensional modeling approach to support time-series forecasting and sales analysis.<br>
 * Enables automation and observability through orchestration.<br>
 * Presents insights through user-friendly dashboards.<br>
+## Project Architecture
+<img src="https://github.com/cc59chong/End-to-End-Cloud-Data-Pipeline-for-Retail-Sales-Forecasting/blob/main/project_architecture.PNG">
 ## Data Flow
 * Infrastructure Setup: Provisioned GCS buckets, BigQuery datasets, and IAM roles using Terraform.<br>
 * Data Ingestion & Exploration: Uploaded raw CSVs to GCS and conducted initial exploration in Jupyter to understand schema, content, and data relationships.<br>
