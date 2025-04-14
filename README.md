@@ -121,5 +121,5 @@ This project successfully delivers a cloud-based, production-grade data pipeline
 * Efficient processing of 58M+ rows using Spark and Parquet.
 * Modular dbt models following the best practices of the layered architecture.
 * Fully automated workflow with failure handling and alerting.
-* Insightful dashboards supporting business decision-making.
+* Insightful dashboards supporting business decision-making.<br>
 This solution is scalable, maintainable, and easily extensible for future enhancements such as adding new metrics, integrating ML models, or supporting real-time data.
