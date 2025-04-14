@@ -24,6 +24,32 @@ Retail data often exists in large, unstructured formats across multiple files, m
 * Visualization: Looker Studio<br>
 * Development Environment: Jupyter, WSL on Windows<br>
 ## Pipeline Overview
+### Table of Contents
+```
+~/de-project$ tree
+.
+├── 5m_exploratory_data_analysis.ipynb
+├── Dockerfile
+├── clean_data_spark.ipynb
+├── conf
+│   └── core-site.xml
+├── docker-compose.yml
+├── gcp
+│   ├── credentials
+│   │   └── gcp_credentials.json
+│   └── gcs-connector-hadoop3-latest.jar
+├── ivy_cache
+├── kaggle-5m-data
+│   ├── calendar.csv
+│   ├── sales_train_validation.csv
+│   └── sell_prices.csv
+├── kestra-etl.yml
+├── kestra-secrets.yml
+├── m5-spark-cleaner
+├── main.tf
+├── spark_run_cleaning.py
+└── terraform.tfstate
+```
 ### 1. Infrastructure Setup (Using Terraform)
 #### Objective
 Establish the foundational infrastructure for the data project—object storage, data warehouse, and access controls—to prepare for subsequent data cleaning, modeling, and orchestration workflows.
